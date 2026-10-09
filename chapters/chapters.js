@@ -2,6 +2,34 @@
 
 (() => {
   const chapters = window.BT_CHAPTERS;
+
+  // جمع الأدوات الثانوية داخل قائمة واحدة.
+  const tools = document.querySelector(".catalog-tools");
+  const extra = document.createElement("details");
+  extra.className = "catalog-extra";
+
+  const summary = document.createElement("summary");
+  summary.textContent = "أدوات إضافية";
+
+  const fields = document.createElement("div");
+  fields.className = "catalog-extra-fields";
+
+  extra.append(summary, fields);
+
+  ["chapter-tag", "chapter-sort", "chapter-view"].forEach((id) => {
+    fields.appendChild(document.getElementById(id).closest("label"));
+  });
+
+  extra.appendChild(document.querySelector(".catalog-options"));
+  extra.appendChild(document.getElementById("jump-form"));
+  extra.appendChild(document.getElementById("volume-links"));
+  extra.appendChild(document.getElementById("mark-all").parentElement);
+
+  tools.appendChild(extra);
+
+  document.querySelector(".catalog-progress")
+    .classList.add("catalog-progress-compact");
+
   const published = chapters
     .filter((chapter) => chapter.status === "published")
     .sort((a, b) => a.number - b.number);
@@ -163,7 +191,11 @@
     const state = BT.chapter(chapter.id);
     const available = chapter.status === "published";
 
-    const card = element("article", "chapter-card");
+    const card = element(
+      "article",
+      available ? "chapter-card" : "chapter-card chapter-upcoming"
+    );
+
     const meta = element("div", "chapter-meta");
 
     const status = !available
@@ -196,8 +228,10 @@
       : chapter.title;
 
     if (available) {
-      const link = element("a", "", title);
+      const link = element("a", "chapter-cover-link", title);
       link.href = chapter.file;
+
+      card.classList.add("chapter-available");
       heading.appendChild(link);
     } else {
       heading.textContent = title;
@@ -245,7 +279,12 @@
     }
 
     if (controls.summaries.checked && chapter.excerpt && available) {
-      const preview = element("blockquote", "chapter-preview", chapter.excerpt);
+      const preview = element(
+        "blockquote",
+        "chapter-preview",
+        chapter.excerpt
+      );
+
       card.appendChild(preview);
 
       let timer;
@@ -264,6 +303,7 @@
 
       const previewButton = element("button", "bt-button", "معاينة");
       previewButton.type = "button";
+
       previewButton.addEventListener("click", () => {
         card.classList.toggle("show-preview");
       });
@@ -284,6 +324,7 @@
       );
 
       toggle.type = "button";
+
       toggle.addEventListener("click", () => {
         BT.markRead(chapter.id, state.status !== "read");
       });
@@ -351,7 +392,10 @@
     }
 
     orderedVolumes.forEach((volume) => {
-      const items = filtered.filter((chapter) => chapter.volume === volume);
+      const items = filtered.filter(
+        (chapter) => chapter.volume === volume
+      );
+
       if (!items.length) return;
 
       const id = `volume-${volumes.indexOf(volume) + 1}`;
@@ -409,7 +453,9 @@
   document.getElementById("jump-form").addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const raw = normalize(document.getElementById("jump-number").value);
+    const raw = normalize(
+      document.getElementById("jump-number").value
+    );
 
     if (!/^\d+$/.test(raw)) {
       message.textContent = "اكتب رقم فصل صحيح.";
@@ -432,7 +478,10 @@
   document.getElementById("random-chapter").addEventListener("click", () => {
     if (!published.length) return;
 
-    const chapter = published[Math.floor(Math.random() * published.length)];
+    const chapter = published[
+      Math.floor(Math.random() * published.length)
+    ];
+
     window.location.href = chapter.file;
   });
 
@@ -449,6 +498,5 @@
   });
 
   window.addEventListener("bt:change", render);
-
   render();
 })();
