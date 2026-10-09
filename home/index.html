@@ -4,13 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080708">
+
+  <meta
+    name="description"
+    content="كان للعرش هيبة، قبل أن ينكسر. اكتشف رواية Broken Throne."
+  >
+
   <title>الرئيسية | Broken Throne</title>
+
+  <!-- التصميم المشترك للموقع -->
   <link rel="stylesheet" href="../style.css">
+
+  <!-- تصميم الرئيسية فقط -->
+  <link rel="stylesheet" href="home.css">
 </head>
 
 <body class="site-page">
+
   <aside class="sidebar">
-    <a class="site-logo" href="../home/index.html" lang="en" dir="ltr">
+    <a
+      class="site-logo"
+      href="../home/index.html"
+      lang="en"
+      dir="ltr"
+      aria-label="Broken Throne — الرئيسية"
+    >
       <span>BROKEN</span>
       <span>THRONE</span>
     </a>
@@ -18,24 +36,94 @@
     <div class="sidebar-divider" aria-hidden="true"></div>
 
     <nav class="site-nav" aria-label="أقسام الموقع">
-      <a href="../home/index.html" aria-current="page">الرئيسية</a>
-      <a href="../chapters/index.html">الفصول</a>
-      <a href="../world/index.html">عالم الرواية</a>
-      <a href="../settings/index.html">إعدادات الموقع</a>
+      <a href="../home/index.html" aria-current="page">
+        الرئيسية
+      </a>
+
+      <a href="../chapters/index.html">
+        الفصول
+      </a>
+
+      <a href="../world/index.html">
+        عالم الرواية
+      </a>
+
+      <a href="../settings/index.html">
+        إعدادات الموقع
+      </a>
     </nav>
   </aside>
 
-  <main class="page-content home-content">
-    <div>
-      <h1 class="home-title" lang="en" dir="ltr">
-        <span>BROKEN</span>
-        <span>THRONE</span>
-      </h1>
+  <main class="page-content novel-home">
 
-      <div class="home-ornament" aria-hidden="true"></div>
+    <section class="novel-hero" aria-labelledby="novel-title">
 
-      <!-- نضيف محتوى الرئيسية هنا لاحقًا حسب طلبك -->
-    </div>
+      <div class="hero-copy">
+        <div class="hero-ornament" aria-hidden="true">
+          <span></span>
+          <i>◆</i>
+          <span></span>
+        </div>
+
+        <h1 id="novel-title" class="novel-title" lang="en" dir="ltr">
+          <span>BROKEN</span>
+          <span>THRONE</span>
+        </h1>
+
+        <p class="hero-tagline">
+          كان للعرش هيبة، قبل أن ينكسر.
+        </p>
+
+        <a class="reading-button" href="../chapters/index.html">
+          <span>ابدأ القراءة</span>
+          <span class="button-arrow" aria-hidden="true">←</span>
+        </a>
+      </div>
+
+      <div class="cover-area">
+        <div class="cover-halo" aria-hidden="true"></div>
+
+        <figure class="novel-cover">
+          <img
+            src="cover.png"
+            alt="غلاف رواية Broken Throne"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </figure>
+      </div>
+
+    </section>
+
+    <section class="novel-synopsis" aria-labelledby="synopsis-title">
+
+      <div class="synopsis-heading">
+        <span class="heading-mark" aria-hidden="true">◆</span>
+        <h2 id="synopsis-title">عن الرواية</h2>
+        <span class="heading-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="synopsis-text">
+        <p>
+          اليوم لا ملك يجلس عليه، ولا مملكة تقبل أن يجلس عليه غيرها.
+          تتحالف الممالك في الصباح وتتخاصم في المساء،
+          وكل معاهدة تُكتب بالحبر تُنقض بالدم.
+        </p>
+
+        <p>
+          في أرض أنهكتها الحروب، لا يبقى أحد بريئاً:
+          الحكّام يخونون، والجنود يموتون على أسماء لا يعرفونها،
+          والعرش المكسور يبقى ينتظر من يتجرأ على لمسه.
+        </p>
+
+        <p class="synopsis-ending">
+          وكل من مدّ يده إليه… دفع الثمن.
+        </p>
+      </div>
+
+    </section>
+
   </main>
+
 </body>
 </html>
