@@ -1,0 +1,360 @@
+/* ===== الرئيسية فقط ===== */
+
+.novel-home {
+  position: relative;
+  padding: 64px clamp(24px, 5vw, 85px) 75px;
+}
+
+/* ===== الواجهة الافتتاحية ===== */
+
+.novel-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 75px);
+
+  width: 100%;
+  max-width: 1200px;
+  min-height: 590px;
+  margin-inline: auto;
+  padding-block: 25px 65px;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.hero-ornament {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 140px;
+  margin-bottom: 30px;
+  color: var(--gold);
+}
+
+.hero-ornament span {
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.hero-ornament i {
+  font-size: 8px;
+  font-style: normal;
+}
+
+.novel-title {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 5.4vw, 86px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.07em;
+
+  text-shadow:
+    0 3px 3px rgba(0, 0, 0, 0.8),
+    0 0 45px rgba(96, 15, 25, 0.22);
+}
+
+.novel-title span {
+  display: block;
+}
+
+.novel-title span + span {
+  margin-top: 5px;
+}
+
+.hero-tagline {
+  margin: 30px 0 0;
+  color: #d9cbbb;
+  font-size: clamp(16px, 1.6vw, 21px);
+  line-height: 2;
+}
+
+/* ===== زر القراءة ===== */
+
+.reading-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+
+  min-width: 205px;
+  min-height: 56px;
+  margin-top: 34px;
+  padding: 15px 25px;
+
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+
+  color: #f0e1ca;
+  background: linear-gradient(135deg, #651622, #300b12);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(196, 161, 106, 0.12);
+
+  font-size: 15px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.reading-button:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-light);
+  box-shadow: 0 12px 35px rgba(96, 15, 25, 0.35);
+}
+
+.button-arrow {
+  color: var(--gold-light);
+  font-size: 21px;
+  transition: transform 0.25s ease;
+}
+
+.reading-button:hover .button-arrow {
+  transform: translateX(-4px);
+}
+
+/* ===== الغلاف ===== */
+
+.cover-area {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  margin-inline: auto;
+  isolation: isolate;
+}
+
+.cover-halo {
+  position: absolute;
+  z-index: -1;
+  inset: -35px;
+
+  background: radial-gradient(
+    ellipse,
+    rgba(108, 24, 31, 0.32),
+    rgba(96, 15, 25, 0.1) 45%,
+    transparent 70%
+  );
+
+  filter: blur(20px);
+}
+
+.novel-cover {
+  position: relative;
+  margin: 0;
+  padding: 8px;
+
+  border: 1px solid rgba(146, 112, 59, 0.48);
+  border-radius: 3px;
+  background: #100b0c;
+
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(96, 15, 25, 0.15);
+}
+
+.novel-cover::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(196, 161, 106, 0.22);
+  pointer-events: none;
+}
+
+.novel-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1px;
+}
+
+/* ===== نبذة الرواية ===== */
+
+.novel-synopsis {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 38px 0 10px;
+  border-top: 1px solid var(--border);
+}
+
+.synopsis-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.heading-mark {
+  color: var(--gold);
+  font-size: 10px;
+}
+
+.synopsis-heading h2 {
+  margin: 0;
+  color: var(--gold-light);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.heading-line {
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    var(--gold),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+.synopsis-text {
+  max-width: 820px;
+}
+
+.synopsis-text p {
+  margin: 0 0 20px;
+  color: #c6b9aa;
+  font-size: 16px;
+  line-height: 2.2;
+}
+
+.synopsis-text .synopsis-ending {
+  margin-top: 28px;
+  padding: 10px 20px 10px 0;
+  border-right: 2px solid var(--red-light);
+  color: #d5b583;
+  font-size: 18px;
+}
+
+/* ===== الشاشات المتوسطة ===== */
+
+@media (max-width: 1100px) {
+  .novel-hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    gap: 48px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-ornament,
+  .novel-title {
+    margin-inline: auto;
+  }
+
+  .novel-title {
+    font-size: clamp(40px, 7vw, 75px);
+  }
+
+  .cover-area {
+    max-width: 300px;
+  }
+}
+
+/* ===== الهاتف ===== */
+
+@media (max-width: 640px) {
+  .novel-home {
+    padding: 35px 16px 45px;
+  }
+
+  .novel-hero {
+    gap: 35px;
+    padding-block: 15px 40px;
+  }
+
+  .hero-ornament {
+    width: 90px;
+    margin-bottom: 24px;
+  }
+
+  .novel-title {
+    font-size: clamp(24px, 5.7vw, 37px);
+    letter-spacing: 0.025em;
+  }
+
+  .hero-tagline {
+    margin-top: 22px;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .reading-button {
+    width: 100%;
+    max-width: 220px;
+    min-width: 0;
+    min-height: 50px;
+    margin-top: 25px;
+    padding: 12px 16px;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .cover-area {
+    max-width: 250px;
+  }
+
+  .cover-halo {
+    inset: -12px;
+  }
+
+  .novel-cover {
+    padding: 5px;
+  }
+
+  .novel-cover::after {
+    inset: 10px;
+  }
+
+  .novel-synopsis {
+    padding-top: 28px;
+  }
+
+  .synopsis-heading {
+    gap: 9px;
+  }
+
+  .synopsis-heading h2 {
+    font-size: 18px;
+  }
+
+  .heading-line {
+    flex: 1;
+    max-width: 60px;
+  }
+
+  .synopsis-text p {
+    font-size: 14px;
+    line-height: 2.1;
+  }
+
+  .synopsis-text .synopsis-ending {
+    padding-right: 12px;
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-button,
+  .button-arrow {
+    transition: none;
+  }
+
+  .reading-button:hover,
+  .reading-button:hover .button-arrow {
+    transform: none;
+  }
+}
