@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080708">
+
   <title>الفصول | Broken Throne</title>
+
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../reading.css">
+
+  <script src="../reading-core.js" defer></script>
+  <script src="chapters-data.js" defer></script>
+  <script src="chapters.js" defer></script>
 </head>
 
 <body class="site-page">
@@ -19,19 +25,131 @@
 
     <nav class="site-nav" aria-label="أقسام الموقع">
       <a href="../home/index.html">الرئيسية</a>
-      <a href="../chapters/index.html" aria-current="page">الفصول</a>
+      <a href="index.html" aria-current="page">الفصول</a>
       <a href="../world/index.html">عالم الرواية</a>
       <a href="../settings/index.html">إعدادات الموقع</a>
     </nav>
   </aside>
 
-  <main class="page-content">
+  <main class="page-content chapter-page">
     <header class="page-header">
       <h1>الفصول</h1>
     </header>
 
-    <!-- نضيف قائمة الفصول هنا لاحقًا -->
-    <!-- كل فصل سيكون بملف مستقل داخل مجلد chapters -->
+    <div class="bt-actions">
+      <a id="first-chapter" class="bt-button bt-primary" hidden>
+        ابدأ من الفصل الأول
+      </a>
+
+      <a id="last-chapter" class="bt-button" hidden>
+        اذهب لآخر فصل
+      </a>
+
+      <a id="continue-chapter" class="bt-button" hidden>
+        تابع من حيث توقفت
+      </a>
+    </div>
+
+    <section class="catalog-progress" aria-label="تقدّم القراءة">
+      <p id="progress-count" aria-live="polite"></p>
+      <div id="chapter-timeline" class="chapter-timeline"></div>
+    </section>
+
+    <section class="catalog-tools" aria-label="البحث وتصفية الفصول">
+      <div class="catalog-fields">
+        <label>
+          ابحث عن فصل
+          <input
+            id="chapter-search"
+            class="bt-control"
+            type="search"
+            placeholder="العنوان أو رقم الفصل"
+          >
+        </label>
+
+        <label>
+          التصفية
+          <select id="chapter-filter" class="bt-control">
+            <option value="all">كل الفصول</option>
+            <option value="unread">غير المقروء فقط</option>
+            <option value="bookmarked">المحفوظ بإشارة</option>
+            <option value="new">الجديد</option>
+          </select>
+        </label>
+
+        <label>
+          الوسم
+          <select id="chapter-tag" class="bt-control">
+            <option value="">كل الوسوم</option>
+          </select>
+        </label>
+
+        <label>
+          الترتيب
+          <select id="chapter-sort" class="bt-control">
+            <option value="asc">من الأول للأخير</option>
+            <option value="desc">من الأخير للأول</option>
+          </select>
+        </label>
+
+        <label>
+          طريقة العرض
+          <select id="chapter-view" class="bt-control">
+            <option value="list">قائمة</option>
+            <option value="grid">شبكة</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="catalog-options">
+        <label>
+          <input id="show-summaries" type="checkbox">
+          إظهار الملخصات والمقتطفات — قد تحتوي حرقًا
+        </label>
+      </div>
+    </section>
+
+    <form id="jump-form" class="catalog-jump">
+      <input
+        id="jump-number"
+        class="bt-control"
+        type="text"
+        inputmode="numeric"
+        aria-label="رقم الفصل"
+        placeholder="رقم الفصل"
+        required
+      >
+
+      <button class="bt-button" type="submit">اذهب للفصل</button>
+      <button class="bt-button" id="random-chapter" type="button">
+        فصل عشوائي
+      </button>
+    </form>
+
+    <p id="catalog-message" class="bt-muted" role="status"></p>
+
+    <nav
+      id="volume-links"
+      class="volume-links"
+      aria-label="انتقل إلى جزء"
+    ></nav>
+
+    <div id="chapters-list"></div>
+
+    <div class="bt-actions">
+      <button id="mark-all" class="bt-button" type="button">
+        تحديد الكل كمقروء
+      </button>
+
+      <button id="reset-progress" class="bt-button" type="button">
+        إعادة ضبط التقدّم
+      </button>
+    </div>
+
+    <noscript>
+      <p>فعّل JavaScript لتشغيل البحث والحفظ.</p>
+      <a href="ch-001.html">قراءة الفصل التجريبي الأول</a>
+    </noscript>
   </main>
 </body>
 </html>
